@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberQuiz - Segurança Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         TELA INICIAL
+    ========================== -->
+
+    <section id="tela-inicial" class="tela">
+
+        <div class="logo">
+            <span>🛡️</span>
+            <h1>CyberQuiz</h1>
+        </div>
+
+        <h2>Você consegue escapar de um golpe digital?</h2>
+
+        <p>
+            Teste seus conhecimentos sobre phishing, senhas,
+            Pix, links suspeitos e segurança digital.
+        </p>
+
+        <div class="regras">
+            <div>
+                <strong>10</strong>
+                <span>Perguntas</span>
+            </div>
+
+            <div>
+                <strong>15s</strong>
+                <span>Por pergunta</span>
+            </div>
+
+            <div>
+                <strong>🏆</strong>
+                <span>Ranking</span>
+            </div>
+        </div>
+
+        <input
+            type="text"
+            id="nome-jogador"
+            placeholder="Digite seu nome"
+            maxlength="20"
+        >
+
+        <button class="btn-principal" onclick="iniciarQuiz()">
+             COMEÇAR QUIZ
+        </button>
+
+        <button class="btn-ranking" onclick="mostrarRanking()">
+            🏆 VER RANKING
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         TELA DO QUIZ
+    ========================== -->
+
+    <section id="tela-quiz" class="tela escondido">
+
+        <header class="quiz-header">
+
+            <div class="jogador">
+                👤 <span id="nome-exibicao"></span>
+            </div>
+
+            <div class="pontuacao">
+                ⭐ <span id="pontos">0</span>
+            </div>
+
+            <div class="timer">
+                ⏱️ <span id="tempo">15</span>
+            </div>
+
+        </header>
+
+
+        <div class="progresso-container">
+            <div id="progresso"></div>
+        </div>
+
+
+        <main class="quiz-content">
+
+            <div class="numero-pergunta">
+                PERGUNTA <span id="numero-pergunta">1</span>/10
+            </div>
+
+            <h2 id="pergunta">
+                Carregando pergunta...
+            </h2>
+
+            <div id="alternativas" class="alternativas">
+
+                <button class="alternativa alternativa-a">
+                    <span>A</span>
+                    <p>Alternativa</p>
+                </button>
+
+                <button class="alternativa alternativa-b">
+                    <span>B</span>
+                    <p>Alternativa</p>
+                </button>
+
+                <button class="alternativa alternativa-c">
+                    <span>C</span>
+                    <p>Alternativa</p>
+                </button>
+
+                <button class="alternativa alternativa-d">
+                    <span>D</span>
+                    <p>Alternativa</p>
+                </button>
+
+            </div>
+
+            <div id="feedback" class="feedback"></div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         TELA DE RESULTADO
+    ========================== -->
+
+    <section id="tela-resultado" class="tela escondido">
+
+        <div class="resultado-card">
+
+            <div class="trofeu">
+                🏆
+            </div>
+
+            <h1>Quiz finalizado!</h1>
+
+            <p class="resultado-nome">
+                Muito bem, <span id="nome-final"></span>!
+            </p>
+
+            <div class="pontuacao-final">
+                <span id="pontuacao-final">0</span>
+                <small>pontos</small>
+            </div>
+
+            <div class="acertos">
+                Você acertou
+                <strong id="acertos-final">0</strong>
+                de 10 perguntas.
+            </div>
+
+            <div class="nivel" id="nivel-final">
+                🛡️ Guardião Digital
+            </div>
+
+            <p id="mensagem-final"></p>
+
+            <button class="btn-principal" onclick="mostrarRanking()">
+                🏆 VER RANKING
+            </button>
+
+            <button class="btn-secundario" onclick="voltarInicio()">
+                🔄 JOGAR NOVAMENTE
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TELA DE RANKING
+    ========================== -->
+
+    <section id="tela-ranking" class="tela escondido">
+
+        <div class="ranking-card">
+
+            <div class="ranking-titulo">
+                <span>🏆</span>
+                <h1>Ranking</h1>
+            </div>
+
+            <p>Os melhores defensores digitais</p>
+
+            <div id="lista-ranking"></div>
+
+            <button class="btn-principal" onclick="voltarInicio()">
+                ← VOLTAR
+            </button>
+
+            <button
+                class="btn-limpar"
+                onclick="limparRanking()"
+            >
+                Limpar ranking
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+

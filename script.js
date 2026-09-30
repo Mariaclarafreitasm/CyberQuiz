@@ -153,10 +153,6 @@ let pontos = 0;
 
 let acertos = 0;
 
-let tempo = 15;
-
-let intervalo;
-
 let nomeJogador = "";
 
 let respondeu = false;
@@ -192,9 +188,6 @@ const alternativasElemento =
 
 const pontosElemento =
     document.getElementById("pontos");
-
-const tempoElemento =
-    document.getElementById("tempo");
 
 const numeroPerguntaElemento =
     document.getElementById("numero-pergunta");
@@ -254,10 +247,6 @@ function iniciarQuiz() {
 function carregarPergunta() {
 
     respondeu = false;
-
-    tempo = 15;
-
-    tempoElemento.textContent = tempo;
 
     feedbackElemento.textContent = "";
 
@@ -335,81 +324,9 @@ function carregarPergunta() {
     );
 
 
-    iniciarTimer();
+    
 }
 
-
-/* ==========================================
-   TIMER
-========================================== */
-
-function iniciarTimer() {
-
-    clearInterval(intervalo);
-
-    intervalo =
-        setInterval(() => {
-
-            tempo--;
-
-            tempoElemento.textContent =
-                tempo;
-
-
-            if (tempo <= 0) {
-
-                clearInterval(intervalo);
-
-                tempoEsgotado();
-            }
-
-        }, 1000);
-}
-
-
-/* ==========================================
-   TEMPO ESGOTADO
-========================================== */
-
-function tempoEsgotado() {
-
-    if (respondeu) {
-        return;
-    }
-
-    respondeu = true;
-
-    const pergunta =
-        perguntas[perguntaAtual];
-
-    const botoes =
-        document.querySelectorAll(
-            ".alternativa"
-        );
-
-
-    botoes.forEach(botao => {
-
-        botao.classList.add(
-            "desativada"
-        );
-
-        botao.disabled = true;
-    });
-
-
-    botoes[pergunta.correta]
-        .classList.add("correta");
-
-
-    feedbackElemento.textContent =
-        "⏰ Tempo esgotado!";
-
-    setTimeout(
-        proximaPergunta,
-        1500
-    );
-}
 
 
 /* ==========================================
@@ -423,8 +340,6 @@ function verificarResposta(indice) {
     }
 
     respondeu = true;
-
-    clearInterval(intervalo);
 
     const pergunta =
         perguntas[perguntaAtual];
@@ -468,11 +383,7 @@ function verificarResposta(indice) {
             + bônus baseado no tempo
         */
 
-        const bonusTempo =
-            tempo * 10;
-
-        const pontosGanhos =
-            100 + bonusTempo;
+        const pontosGanhos = 100;
 
         pontos += pontosGanhos;
 
@@ -552,7 +463,7 @@ function proximaPergunta() {
 
 function finalizarQuiz() {
 
-    clearInterval(intervalo);
+    
 
     telaQuiz.classList.add(
         "escondido"
@@ -863,7 +774,6 @@ function limparRanking() {
 
 function voltarInicio() {
 
-    clearInterval(intervalo);
 
     telaQuiz.classList.add(
         "escondido"
